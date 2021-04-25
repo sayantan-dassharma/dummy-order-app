@@ -231,7 +231,7 @@ output application/json
 ]]]></ee:set-payload>
             </ee:message>
         </ee:transform>
-        <logger level="INFO" doc:name="Logger" doc:id="7fccebb2-1b0e-49d5-92b1-e460d3b7363a" message="Log Payload: #[payload]" />
+        <logger level="INFO" doc:name="Logger" doc:id="7fccebb2-1b0e-49d5-92b1-e460d3b7363a" message="Log GET Response: #[payload]" />
 		
         <logger level="INFO" doc:name="Logger" doc:id="66d9fb59-c9c7-414b-a834-0433e0cbd2dc" message="End GET Orders Flow" />
 		
