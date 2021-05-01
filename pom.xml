@@ -4,7 +4,7 @@
 
 	<groupId>com.mycompany</groupId>
 	<artifactId>dummy-order-app</artifactId>
-    <version>1.0.4-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>mule-application</packaging>
 
 	<name>dummy-order-app</name>
@@ -15,6 +15,7 @@
 
 		<app.runtime>4.3.0</app.runtime>
 		<mule.maven.plugin.version>3.3.5</mule.maven.plugin.version>
+		<mule.version>4.3.0</mule.version>
 	</properties>
 
 	<build>
@@ -30,6 +31,19 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
+					<cloudHubDeployment>
+					    <uri>https://anypoint.mulesoft.com</uri>
+					    <muleVersion>${mule.version}</muleVersion>
+					    <!-- Deploy User Parameter -->
+					    <username>${anypoint.username}</username>
+					    <password>${anypoint.password}</password>
+					    <!-- Environment Parameter -->
+					    <environment>Sandbox</environment>
+					    <applicationName>dummy-order-app-jenkins-cicd</applicationName>
+					    <businessGroup>MyOwnCompany</businessGroup>
+					    <workerType>Micro</workerType>
+					    <objectStoreV2>true</objectStoreV2>
+					</cloudHubDeployment>
 				</configuration>
 			</plugin>
 		</plugins>
