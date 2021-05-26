@@ -6,6 +6,7 @@ http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/m
     </http:listener-config>
     <apikit:config name="order-api-config" api="order-api.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
     <configuration-properties doc:name="Configuration properties" doc:id="48a67826-c659-4487-9ed9-6ee0e29fc6e3" file="config.yaml" />
+	<!-- <api-gateway:autodiscovery apiId="${api.id}" doc:name="API Autodiscovery" doc:id="2c43b27e-daa9-4a7e-94c9-9d9f7e59922e" flowRef="order-api-main" /> -->
 	<flow name="order-api-main">
         <http:listener config-ref="order-api-httpListenerConfig" path="/api/*">
             <http:response statusCode="#[vars.httpStatus default 200]">
@@ -171,6 +172,7 @@ output application/json
     <flow name="get:\orders:order-api-config">
     	
     	<logger level="INFO" doc:name="Logger" doc:id="b62659b9-c776-4f1e-a0d1-ca7d34015091" message="Begin GET Orders Flow" />
+		<logger level="DEBUG" doc:name="Logger" doc:id="2c12c57e-ba61-434e-ba54-417cc745119d" message="Begin GET Orders Flow .. Category Debug Log" category="myCategory"/>
 		
         <ee:transform xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
             <ee:message>
@@ -232,6 +234,7 @@ output application/json
             </ee:message>
         </ee:transform>
         <logger level="INFO" doc:name="Logger" doc:id="7fccebb2-1b0e-49d5-92b1-e460d3b7363a" message="GET Orders Response: #[payload]" />
+		<logger level="DEBUG" doc:name="Logger" doc:id="b03c6627-9afb-41d0-bd9f-430065ea0327" message="End GET .. .. Category Debug Log" category="myCategory"/>
 		
         <logger level="INFO" doc:name="Logger" doc:id="66d9fb59-c9c7-414b-a834-0433e0cbd2dc" message="End GET Orders Flow" />
 		
